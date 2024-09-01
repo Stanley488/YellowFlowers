@@ -308,7 +308,7 @@
     </div>
   </div>
 
-  <audio id="myAudio"autoplay>
+  <audio id="myAudio" autoplay>
     <source src="./mp3/carencias_de_cordura.wav" type="audio/mpeg">
   </audio>
 
@@ -316,7 +316,16 @@
     document.body.addEventListener('click', function () {
       var audio = document.getElementById('myAudio');
       audio.volume = 0.1;
-      audio.play();
+      audio.play(); // Reproduce el audio cuando el usuario hace clic en el body
+    });
+  
+    document.addEventListener('visibilitychange', function() {
+      var audio = document.getElementById('myAudio');
+      if (document.hidden) {
+        audio.muted = true;
+      } else {
+        audio.muted = false;
+      }
     });
 
     onload = () => {
